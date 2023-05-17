@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react"
 import { VscHeart, VscHeartFilled } from "react-icons/vsc"
 import { IconHoverEffect } from "./IconHoverEffect"
 import { api } from "~/utils/api"
+import { LoadingSpinner } from "./LoadingSpinner"
 
 type Tweet = {
   id: string
@@ -18,13 +19,13 @@ type Tweet = {
 type InfiniteTweetListProps = {
   isLoading: boolean
   isError: boolean
-  hasMore: boolean
+  hasMore: boolean | undefined
   fetchNewTweets: () => Promise<unknown>
   tweets?: Tweet[]
 }
 
-export function InfiniteTweetList({ tweets, isError, isLoading, fetchNewTweets, hasMore }: InfiniteTweetListProps) {
-  if (isLoading) return <h1>Loading...</h1>
+export function InfiniteTweetList({ tweets, isError, isLoading, fetchNewTweets, hasMore = false }: InfiniteTweetListProps) {
+  if (isLoading) return <LoadingSpinner />
   if (isError) return <h1>Error...</h1>
   if (tweets == null || tweets.length === 0) {
     return <h2 className=" my-4 text-center text-2xl text-gray-500">No Tweets</h2>
@@ -36,7 +37,7 @@ export function InfiniteTweetList({ tweets, isError, isLoading, fetchNewTweets, 
         dataLength={tweets.length}
         next={fetchNewTweets}
         hasMore={hasMore}
-        loader={"Loading..."}
+        loader={<LoadingSpinner />}
       >
         {tweets.map(tweet => {
           return <TweetCard key={tweet.id} {...tweet} />
@@ -77,7 +78,10 @@ function TweetCard({ id, user, content, createdAt, likeCount, likeByMe }: Tweet)
           })
         }
       }
+
       trpcUtils.tweet.infiniteFeed.setInfiniteData({}, upateData)
+      trpcUtils.tweet.infiniteFeed.setInfiniteData({ onlyFollowing: true }, upateData)
+      trpcUtils.tweet.infiniteProfileFeed.setInfiniteData({ userId: user.id }, upateData)
     }
   })
 
