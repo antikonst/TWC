@@ -37,7 +37,7 @@ function Form() {
 
       if (session.status !== "authenticated") return
 
-      trpcUtils.tweet.infiniteFeed.setInfiniteData({}, (oldData: object | any) => {
+      trpcUtils.tweet.infiniteFeed.setInfiniteData({}, (oldData: any) => {
         if (oldData == null || oldData.pages[0] == null) return
 
         const newCacheTweet = {
@@ -46,8 +46,8 @@ function Form() {
           likedByMe: false,
           user: {
             id: session.data.user.id,
-            name: session.data.user.name || null || undefined,
-            image: session.data.user.image || null || undefined,
+            name: session.data.user.name || null,
+            image: session.data.user.image || null,
           }
         }
 
