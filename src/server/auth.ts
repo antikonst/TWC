@@ -62,7 +62,7 @@ export const authOptions: NextAuthOptions = {
     }),
     MailRuProvider({
       clientId: env.MAILRU_CLIENT_ID,
-      clientSecret: env.MAILRU_CLIENT_SECRET
+      clientSecret: env.MAILRU_CLIENT_SECRET,
     }),
     EmailProvider({
       // server: env.EMAIL_SERVER,
