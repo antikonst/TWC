@@ -25,6 +25,14 @@ export const env = createEnv({
     DISCORD_CLIENT_SECRET: z.string(),
     YANDEX_CLIENT_ID: z.string(),
     YANDEX_CLIENT_SECRET: z.string(),
+    EMAIL_SERVER: z.string(),
+    EMAIL_FROM: z.string(),
+    EMAIL_SERVER_HOST: z.string(),
+    EMAIL_SERVER_PORT: z.string(),
+    EMAIL_SERVER_USER: z.string(),
+    EMAIL_SERVER_PASSWORD: z.string(),
+    MAILRU_CLIENT_ID: z.string(),
+    MAILRU_CLIENT_SECRET: z.string(),
   },
 
   /**
@@ -49,5 +57,13 @@ export const env = createEnv({
     DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
     YANDEX_CLIENT_ID: process.env.YANDEX_CLIENT_ID,
     YANDEX_CLIENT_SECRET: process.env.YANDEX_CLIENT_SECRET,
+    EMAIL_SERVER: process.env.EMAIL_SERVER,
+    EMAIL_FROM: process.env.EMAIL_FROM,
+    EMAIL_SERVER_HOST: process.env.EMAIL_SERVER_HOST,
+    EMAIL_SERVER_PORT: process.env.EMAIL_SERVER_PORT,
+    EMAIL_SERVER_USER: process.env.EMAIL_SERVER_USER,
+    EMAIL_SERVER_PASSWORD: process.env.EMAIL_SERVER_PASSWORD,
+    MAILRU_CLIENT_ID: process.env.MAILRU_CLIENT_ID,
+    MAILRU_CLIENT_SECRET: process.env.MAILRU_CLIENT_SECRET,
   },
 });
