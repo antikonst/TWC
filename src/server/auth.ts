@@ -65,25 +65,25 @@ export const authOptions: NextAuthOptions = {
       clientSecret: env.MAILRU_CLIENT_SECRET,
     }),
     EmailProvider({
-      // server: env.EMAIL_SERVER,
-      // from: env.EMAIL_FROM,
-      maxAge: 1 * 60 * 60, // How long email links are valid for (default 24h)
-      server: {
-        host: env.EMAIL_SERVER_HOST,
-        port: +env.EMAIL_SERVER_PORT,
-        auth: {
-          user: env.EMAIL_SERVER_USER,
-          pass: env.EMAIL_SERVER_PASSWORD
-        }
-      },
+      server: env.EMAIL_SERVER,
       from: env.EMAIL_FROM,
-      sendVerificationRequest({
-        identifier: email,
-        url,
-        provider: { server, from },
-      }) {
-        /* your function */
-      },
+      maxAge: 1 * 60 * 60, // How long email links are valid for (default 24h)
+      // server: {
+      //   host: env.EMAIL_SERVER_HOST,
+      //   port: +env.EMAIL_SERVER_PORT,
+      //   auth: {
+      //     user: env.EMAIL_SERVER_USER,
+      //     pass: env.EMAIL_SERVER_PASSWORD
+      //   }
+      // },
+      // from: env.EMAIL_FROM,
+      // sendVerificationRequest({
+      //   identifier: email,
+      //   url,
+      //   provider: { server, from },
+      // }) {
+      //   /* your function */
+      // },
     }),
     /**
      * ...add more providers here.
