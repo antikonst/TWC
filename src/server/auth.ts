@@ -52,18 +52,18 @@ export const authOptions: NextAuthOptions = {
   },
   adapter: PrismaAdapter(prisma),
   providers: [
-    DiscordProvider({
-      clientId: env.DISCORD_CLIENT_ID,
-      clientSecret: env.DISCORD_CLIENT_SECRET,
-    }),
+    // DiscordProvider({
+    //   clientId: env.DISCORD_CLIENT_ID,
+    //   clientSecret: env.DISCORD_CLIENT_SECRET,
+    // }),
     YandexProvider({
       clientId: env.YANDEX_CLIENT_ID,
       clientSecret: env.YANDEX_CLIENT_SECRET,
     }),
-    MailRuProvider({
-      clientId: env.MAILRU_CLIENT_ID,
-      clientSecret: env.MAILRU_CLIENT_SECRET,
-    }),
+    // MailRuProvider({
+    //   clientId: env.MAILRU_CLIENT_ID,
+    //   clientSecret: env.MAILRU_CLIENT_SECRET,
+    // }),
     EmailProvider({
       server: env.EMAIL_SERVER,
       from: env.EMAIL_FROM,
